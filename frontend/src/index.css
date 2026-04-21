@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #6c63ff;
+  --secondary: #ff6584;
+  --accent: #43e97b;
+  --bg: #0f0f1a;
+  --bg2: #1a1a2e;
+  --bg3: #16213e;
+  --card: #1e1e35;
+  --text: #e2e8f0;
+  --text2: #94a3b8;
+  --border: #2d2d4e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  direction: rtl;
+  margin: 0;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+.btn-primary {
+  @apply px-4 py-2 rounded-xl font-bold transition-all duration-200;
+  background: var(--primary);
+  color: white;
+}
+.btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+.btn-secondary {
+  @apply px-4 py-2 rounded-xl font-bold transition-all duration-200;
+  background: var(--bg3);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { border-color: var(--primary); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  @apply rounded-2xl p-6;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 rounded-xl outline-none transition-all;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Cairo', sans-serif;
+}
+.input-field:focus { border-color: var(--primary); }
+.input-field::placeholder { color: var(--text2); }
+
+.badge {
+  @apply px-2 py-0.5 rounded-lg text-xs font-bold;
+}
+
+a { color: inherit; text-decoration: none; }
+
+@keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
+.fade-in { animation: fadeIn 0.3s ease; }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(108,99,255,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(108,99,255,0); }
+}
+.pulse-glow { animation: pulse-glow 2s infinite; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float { animation: float 3s ease-in-out infinite; }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; color: black; direction: rtl; }
+}
